@@ -1,0 +1,40 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/abhijeet/Applications/test/sky-test/target/scala-2.12/test-classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.17:component from component compiler for Scala 2.12.3[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.17:component from component compiler for Scala 2.12.3[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 5ff06ea1, interfacing (CompilerInterface) with Scala compiler version 2.12.3[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes:/home/abhijeet/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.3.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/abhijeet/Applications/test/sky-test/target/scala-2.12/test-classes:/home/abhijeet/Applications/test/sky-test/target/scala-2.12/classes:/home/abhijeet/.ivy2/cache/org.scoverage/scalac-scoverage-runtime_2.12/jars/scalac-scoverage-runtime_2.12-1.3.1.jar:/home/abhijeet/.ivy2/cache/com.google.inject/guice/jars/guice-4.2.2.jar:/home/abhijeet/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar:/home/abhijeet/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar:/home/abhijeet/.ivy2/cache/com.google.guava/guava/bundles/guava-25.1-android.jar:/home/abhijeet/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-3.0.2.jar:/home/abhijeet/.ivy2/cache/org.checkerframework/checker-compat-qual/jars/checker-compat-qual-2.0.0.jar:/home/abhijeet/.ivy2/cache/com.google.errorprone/error_prone_annotations/jars/error_prone_annotations-2.1.3.jar:/home/abhijeet/.ivy2/cache/com.google.j2objc/j2objc-annotations/jars/j2objc-annotations-1.1.jar:/home/abhijeet/.ivy2/cache/org.codehaus.mojo/animal-sniffer-annotations/jars/animal-sniffer-annotations-1.14.jar:/home/abhijeet/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-3.3.3.jar:/home/abhijeet/.ivy2/cache/net.bytebuddy/byte-buddy/jars/byte-buddy-1.10.5.jar:/home/abhijeet/.ivy2/cache/net.bytebuddy/byte-buddy-agent/jars/byte-buddy-agent-1.10.5.jar:/home/abhijeet/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-2.6.jar:/home/abhijeet/.ivy2/cache/org.scalacheck/scalacheck_2.12/jars/scalacheck_2.12-1.14.1.jar:/home/abhijeet/.ivy2/cache/org.scala-sbt/test-interface/jars/test-interface-1.0.jar:/home/abhijeet/.ivy2/cache/org.scalamock/scalamock-scalatest-support_2.12/jars/scalamock-scalatest-support_2.12-3.6.0.jar:/home/abhijeet/.ivy2/cache/org.scalamock/scalamock-core_2.12/jars/scalamock-core_2.12-3.6.0.jar:/home/abhijeet/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.12.3.jar:/home/abhijeet/.ivy2/cache/org.scalatest/scalatest_2.12/bundles/scalatest_2.12-3.0.1.jar:/home/abhijeet/.ivy2/cache/org.scalactic/scalactic_2.12/bundles/scalactic_2.12-3.0.1.jar:/home/abhijeet/.ivy2/cache/org.scala-lang.modules/scala-xml_2.12/bundles/scala-xml_2.12-1.0.5.jar:/home/abhijeet/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.12/bundles/scala-parser-combinators_2.12-1.0.4.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 2.040733707 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/abhijeet/Applications/test/sky-test/src/test/scala/com/sky/player/PlayerEventHandlerImplSpec.scala source file has the following implicit definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	convertToStringShouldWrapperForVerb, convertToStringMustWrapper, convertToStringCanWrapper, convertToWordSpecStringWrapper, convertNumericToPlusOrMinusWrapper, convertToAnyMustWrapper, convertToEqualizer, subjectWithAfterWordRegistrationFunction, convertToRegexWrapper, unconstrainedEquality, convertToStringMustWrapperForVerb, convertSymbolToHavePropertyMatcherGenerator, subjectRegistrationFunction.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m

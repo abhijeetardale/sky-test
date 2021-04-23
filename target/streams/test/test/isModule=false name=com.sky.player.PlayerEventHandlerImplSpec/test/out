@@ -1,0 +1,25 @@
+[0m[[0minfo[0m] [0m[32mPlayerEventHandlerImplSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mPlayerEventHandler[0m[0m
+[0m[[0minfo[0m] [0m[32m  when Started event[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from beginning if no bookmark found[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from last stored stream position for one bookmark[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from last stored stream position for correct bookmark for requested content id[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from last stored stream position for multiple bookmarks[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from last stored stream position for multiple bookmarks with expired[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from beginning if bookmark is expired[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Play from beginning if ServiceUnavailable[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Stop the player if unexpected error occurred[0m[0m
+[0m[[0minfo[0m] [0m[32m  when Stopped event[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return stop and successfully publish event[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must Stop the player if unexpected error occurred[0m[0m
+[0m[[0minfo[0m] [0m[32m  when Unknown event[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must do nothing[0m[0m
+[0m[[0minfo[0m] [0m[32m  when notOlderThan30Days[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return true if today's bookmark[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return true if new bookmark[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return false if 30 days older[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return false if older than 30 days[0m[0m
+[0m[[0minfo[0m] [0m[32m  when sortBookmarks[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return same order if ordered[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return correct order if not ordered[0m[0m
+[0m[[0minfo[0m] [0m[32m  - must return correct order if not ordered and multiple[0m[0m

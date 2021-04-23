@@ -1,0 +1,258 @@
+<scoverage 
+statement-count="68" statements-invoked="68" statement-rate="100.00" branch-rate="100.00" version="1.0" timestamp="1613833190602">
+    <packages>
+        <package name="com.sky.player" statement-count="68" statements-invoked="68" statement-rate="100.00">
+            <classes>
+                <class 
+                name="com.sky.player.PlayerEventHandlerImpl" filename="com/sky/player/PlayerEventHandlerImpl.scala" statement-count="66" statements-invoked="66" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/publishEvent" statement-count="12" statements-invoked="12" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2118" end="2232" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="1977" end="1977" line="56" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2104" end="2116" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2209" end="2226" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2185" end="2200" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2179" end="2185" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="1986" end="1992" line="56" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="1965" end="2021" line="56" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2093" end="2233" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2120" end="2179" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="2231" end="2232" line="60" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="publishEvent" start="1977" end="2020" line="56" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/&lt;none&gt;" statement-count="4" statements-invoked="4" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="&lt;none&gt;" start="486" end="488" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="&lt;none&gt;" start="414" end="453" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="&lt;none&gt;" start="431" end="452" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="&lt;none&gt;" start="526" end="527" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/mayBeValidBookMark" statement-count="33" statements-invoked="33" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1240" end="1285" line="37" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1432" end="1464" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1663" end="1695" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="966" end="985" line="29" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1628" end="1643" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1830" end="1845" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1393" end="1408" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1763" end="1855" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1549" end="1653" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1345" end="1418" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1059" end="1128" line="33" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1824" end="1830" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1679" end="1694" line="46" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1256" end="1284" line="37" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1448" end="1463" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="978" end="984" line="29" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1765" end="1824" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1347" end="1387" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1551" end="1622" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1622" end="1628" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1109" end="1127" line="33" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1387" end="1393" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1854" end="1855" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1652" end="1653" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1417" end="1418" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1076" end="1100" line="33" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1738" end="1856" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1138" end="1181" line="35" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1322" end="1419" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1523" end="1654" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1749" end="1761" line="49" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1534" end="1547" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="mayBeValidBookMark" start="1333" end="1343" line="40" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/sortBookmarks" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="sortBookmarks" start="2465" end="2528" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="sortBookmarks" start="2503" end="2503" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="sortBookmarks" start="2482" end="2493" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="sortBookmarks" start="2495" end="2527" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="sortBookmarks" start="2503" end="2503" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/notOlderThan30Days" statement-count="3" statements-invoked="3" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="notOlderThan30Days" start="2349" end="2391" line="65" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="notOlderThan30Days" start="2380" end="2390" line="65" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="notOlderThan30Days" start="2322" end="2392" line="65" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/handleEvent" statement-count="9" statements-invoked="9" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="716" end="755" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="851" end="866" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="802" end="876" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="845" end="851" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="665" end="694" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="804" end="845" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="788" end="800" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="875" end="876" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="PlayerEventHandlerImpl" class-type="Class" full-class-name="com.sky.player.PlayerEventHandlerImpl" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/PlayerEventHandlerImpl.scala" method="handleEvent" start="777" end="877" line="23" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="com.sky.player.Event" filename="com/sky/player/Event.scala" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="com.sky.player/Event/&lt;none&gt;" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.sky.player" class="Event" class-type="Object" full-class-name="com.sky.player.Event" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/Event.scala" method="&lt;none&gt;" start="125" end="134" line="8" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.sky.player" class="Event" class-type="Object" full-class-name="com.sky.player.Event" source="/home/abhijeet/Applications/test/sky-test/src/main/scala/com/sky/player/Event.scala" method="&lt;none&gt;" start="99" end="108" line="7" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

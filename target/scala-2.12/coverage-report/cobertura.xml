@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage 
+line-rate="1.00" lines-valid="68" lines-covered="68" branches-valid="0" branches-covered="0" branch-rate="1.00" complexity="0" version="1.0" timestamp="1613833190568">
+    <sources>
+        <source>--source</source>
+        <source>/home/abhijeet/Applications/test/sky-test/src/main/scala</source>
+    </sources>
+    <packages>
+        <package name="com.sky.player" line-rate="1.00" branch-rate="1.00" complexity="0">
+            <classes>
+                <class 
+                name="com.sky.player.PlayerEventHandlerImpl" filename="com/sky/player/PlayerEventHandlerImpl.scala" line-rate="1.00" branch-rate="1.00" complexity="0">
+                    <methods>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/publishEvent" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="56" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="56" hits="1" branch="false"/>
+                                <line number="56" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="60" hits="1" branch="false"/>
+                                <line number="56" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/&lt;none&gt;" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="13" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/mayBeValidBookMark" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="37" hits="1" branch="false"/>
+                                <line number="41" hits="1" branch="false"/>
+                                <line number="46" hits="1" branch="false"/>
+                                <line number="29" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="33" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="46" hits="1" branch="false"/>
+                                <line number="37" hits="1" branch="false"/>
+                                <line number="41" hits="1" branch="false"/>
+                                <line number="29" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="33" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="33" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="35" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="49" hits="1" branch="false"/>
+                                <line number="45" hits="1" branch="false"/>
+                                <line number="40" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/sortBookmarks" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="67" hits="1" branch="false"/>
+                                <line number="67" hits="1" branch="false"/>
+                                <line number="67" hits="1" branch="false"/>
+                                <line number="67" hits="1" branch="false"/>
+                                <line number="67" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/notOlderThan30Days" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="65" hits="1" branch="false"/>
+                                <line number="65" hits="1" branch="false"/>
+                                <line number="65" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.sky.player/PlayerEventHandlerImpl/handleEvent" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                                <line number="23" hits="1" branch="false"/>
+                            </lines>
+</method>
+                    </methods>
+                    <lines>
+                        <line number="37" hits="1" branch="false"/>
+                        <line number="67" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="56" hits="1" branch="false"/>
+                        <line number="41" hits="1" branch="false"/>
+                        <line number="46" hits="1" branch="false"/>
+                        <line number="65" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="29" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="33" hits="1" branch="false"/>
+                        <line number="67" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="67" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="67" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="46" hits="1" branch="false"/>
+                        <line number="56" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="37" hits="1" branch="false"/>
+                        <line number="41" hits="1" branch="false"/>
+                        <line number="29" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="56" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="65" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="33" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="65" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="33" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="35" hits="1" branch="false"/>
+                        <line number="60" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="67" hits="1" branch="false"/>
+                        <line number="23" hits="1" branch="false"/>
+                        <line number="49" hits="1" branch="false"/>
+                        <line number="56" hits="1" branch="false"/>
+                        <line number="45" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="40" hits="1" branch="false"/>
+                    </lines>
+</class>
+                <class 
+                name="com.sky.player.Event" filename="com/sky/player/Event.scala" line-rate="1.00" branch-rate="1.00" complexity="0">
+                    <methods>
+                        <method name="com.sky.player/Event/&lt;none&gt;" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="8" hits="1" branch="false"/>
+                                <line number="7" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                    </methods>
+                    <lines>
+                        <line number="8" hits="1" branch="false"/>
+                        <line number="7" hits="1" branch="false"/>
+                    </lines>
+</class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

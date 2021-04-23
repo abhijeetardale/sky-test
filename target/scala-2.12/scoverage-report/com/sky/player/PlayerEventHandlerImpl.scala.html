@@ -1,0 +1,1498 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          com/sky/player/PlayerEventHandlerImpl.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package com.sky.player
+</span>2 <span style=''>
+</span>3 <span style=''>import com.google.inject.Inject
+</span>4 <span style=''>import com.sky.bookmarking.{Bookmark, BookmarkingService, GenericError, ServiceUnavailable}
+</span>5 <span style=''>import com.sky.player.Event.{Started, Stopped}
+</span>6 <span style=''>
+</span>7 <span style=''>import java.time.OffsetDateTime
+</span>8 <span style=''>import java.util.logging.{Level, Logger}
+</span>9 <span style=''>
+</span>10 <span style=''>class PlayerEventHandlerImpl@Inject()(service: BookmarkingService, userId: String) extends PlayerEventHandler {
+</span>11 <span style=''>
+</span>12 <span style=''>  private val logger: Logger = </span><span style='background: #AEF1AE'>Logger.getLogger(this.getClass.getName)</span><span style=''>
+</span>13 <span style=''>  private val filterDays: Int = </span><span style='background: #AEF1AE'>30</span><span style=''>
+</span>14 <span style=''>  private val defaultPosition: Int = </span><span style='background: #AEF1AE'>0</span><span style=''>
+</span>15 <span style=''>
+</span>16 <span style=''>  override def handleEvent(eventType: String, contentId: String, streamPosition: Int): Action = eventType match {
+</span>17 <span style=''>
+</span>18 <span style=''>    case Started  =&gt; </span><span style='background: #AEF1AE'>mayBeValidBookMark(contentId)</span><span style=''>
+</span>19 <span style=''>
+</span>20 <span style=''>    case Stopped =&gt; </span><span style='background: #AEF1AE'>publishEvent(contentId, streamPosition)</span><span style=''>
+</span>21 <span style=''>
+</span>22 <span style=''>    case _ =&gt;
+</span>23 <span style=''>      </span><span style='background: #AEF1AE'>logger.log(Level.SEVERE, s&quot;invalid event type received for userId: $userId &amp; contentId: $contentId&quot;)</span><span style=''>
+</span>24 <span style=''>      Ignored
+</span>25 <span style=''>  }
+</span>26 <span style=''>
+</span>27 <span style=''>  private def mayBeValidBookMark(contentId: String): Action = {
+</span>28 <span style=''>
+</span>29 <span style=''>    </span><span style='background: #AEF1AE'>service.get(userId)</span><span style=''> match {
+</span>30 <span style=''>
+</span>31 <span style=''>      case Right(bookmarks) =&gt;
+</span>32 <span style=''>
+</span>33 <span style=''>        val filteredBookmarks = </span><span style='background: #AEF1AE'>bookmarks.filter(_.contentId == contentId).filter(notOlderThan30Days)</span><span style=''>
+</span>34 <span style=''>
+</span>35 <span style=''>        </span><span style='background: #AEF1AE'>sortBookmarks(filteredBookmarks).headOption</span><span style=''> match {
+</span>36 <span style=''>          case Some(validBookmark) =&gt;
+</span>37 <span style=''>            </span><span style='background: #AEF1AE'>Play(contentId, validBookmark.streamPosition)</span><span style=''>
+</span>38 <span style=''>
+</span>39 <span style=''>          case None =&gt;
+</span>40 <span style=''>            </span><span style='background: #AEF1AE'>logger.log(Level.INFO, s&quot;No existing bookmark found for userId: $userId &amp; contentId: $contentId&quot;)</span><span style=''>
+</span>41 <span style=''>            </span><span style='background: #AEF1AE'>Play(contentId, defaultPosition)</span><span style=''>
+</span>42 <span style=''>        }
+</span>43 <span style=''>
+</span>44 <span style=''>      case Left(ServiceUnavailable) =&gt;
+</span>45 <span style=''>        </span><span style='background: #AEF1AE'>logger.log(Level.WARNING, s&quot;received ServiceUnavailable error while calling bookmarks for userId: $userId &amp; contentId: $contentId&quot;)</span><span style=''>
+</span>46 <span style=''>        </span><span style='background: #AEF1AE'>Play(contentId, defaultPosition)</span><span style=''>
+</span>47 <span style=''>
+</span>48 <span style=''>      case Left(GenericError) =&gt;
+</span>49 <span style=''>        </span><span style='background: #AEF1AE'>logger.log(Level.SEVERE, s&quot;received GenericError while calling bookmarks for userId: $userId &amp; contentId: $contentId&quot;)</span><span style=''>
+</span>50 <span style=''>        Stop
+</span>51 <span style=''>    }
+</span>52 <span style=''>  }
+</span>53 <span style=''>
+</span>54 <span style=''>  private def publishEvent(contentId: String, streamPosition: Int): Action = {
+</span>55 <span style=''>
+</span>56 <span style=''>    </span><span style='background: #AEF1AE'>service.put(Bookmark(userId, contentId, streamPosition))</span><span style=''> match {
+</span>57 <span style=''>      case Right(_) =&gt; Stop
+</span>58 <span style=''>
+</span>59 <span style=''>      case Left(error) =&gt;
+</span>60 <span style=''>        </span><span style='background: #AEF1AE'>logger.log(Level.SEVERE, s&quot;received GenericError while storing bookmarks for userId: $userId &amp; contentId: $contentId and error was: $error&quot;)</span><span style=''>
+</span>61 <span style=''>        Stop
+</span>62 <span style=''>    }
+</span>63 <span style=''>  }
+</span>64 <span style=''>
+</span>65 <span style=''>  private def notOlderThan30Days(bookmark: Bookmark): Boolean = </span><span style='background: #AEF1AE'>bookmark.timestamp.isAfter(OffsetDateTime.now().minusDays(filterDays))</span><span style=''>
+</span>66 <span style=''>
+</span>67 <span style=''>  private def sortBookmarks(bookmarks: Seq[Bookmark]): Seq[Bookmark] = </span><span style='background: #AEF1AE'>bookmarks.sortBy(_.timestamp)(Ordering[OffsetDateTime].reverse)</span><span style=''>
+</span>68 <span style=''>
+</span>69 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          414
+          -
+          453
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.getLogger
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Logger.getLogger(this.getClass().getName())
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          431
+          -
+          452
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Class.getName
+        </td>
+        <td style="background: #AEF1AE">
+          this.getClass().getName()
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          486
+          -
+          488
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          30
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          526
+          -
+          527
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          665
+          -
+          694
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.mayBeValidBookMark
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.mayBeValidBookMark(contentId)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          716
+          -
+          755
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.publishEvent
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.publishEvent(contentId, streamPosition)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          851
+          -
+          866
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &amp; contentId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          802
+          -
+          876
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;invalid event type received for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          845
+          -
+          851
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          804
+          -
+          845
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;invalid event type received for userId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          788
+          -
+          800
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          java.util.logging.Level.SEVERE
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Level.SEVERE
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          875
+          -
+          876
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          777
+          -
+          877
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.log
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.logger.log(java.util.logging.Level.SEVERE, scala.StringContext.apply(&quot;invalid event type received for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId))
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          966
+          -
+          985
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.bookmarking.BookmarkingService.get
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.service.get(PlayerEventHandlerImpl.this.userId)
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          978
+          -
+          984
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          1059
+          -
+          1128
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.TraversableLike.filter
+        </td>
+        <td style="background: #AEF1AE">
+          bookmarks.filter(((x$1: com.sky.bookmarking.Bookmark) =&gt; x$1.contentId.==(contentId))).filter({
+  ((bookmark: com.sky.bookmarking.Bookmark) =&gt; PlayerEventHandlerImpl.this.notOlderThan30Days(bookmark))
+})
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          1109
+          -
+          1127
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.notOlderThan30Days
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.notOlderThan30Days(bookmark)
+        </td>
+      </tr><tr>
+        <td>
+          33
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          1076
+          -
+          1100
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Object.==
+        </td>
+        <td style="background: #AEF1AE">
+          x$1.contentId.==(contentId)
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          1138
+          -
+          1181
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.TraversableLike.headOption
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.sortBookmarks(filteredBookmarks).headOption
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          1240
+          -
+          1285
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.Play.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Play.apply(contentId, validBookmark.streamPosition)
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          1256
+          -
+          1284
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.bookmarking.Bookmark.streamPosition
+        </td>
+        <td style="background: #AEF1AE">
+          validBookmark.streamPosition
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          1393
+          -
+          1408
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &amp; contentId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          1345
+          -
+          1418
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;No existing bookmark found for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          1347
+          -
+          1387
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;No existing bookmark found for userId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          1387
+          -
+          1393
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          1417
+          -
+          1418
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          1322
+          -
+          1419
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.log
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.logger.log(java.util.logging.Level.INFO, scala.StringContext.apply(&quot;No existing bookmark found for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId))
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          1333
+          -
+          1343
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          java.util.logging.Level.INFO
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Level.INFO
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          1432
+          -
+          1464
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.Play.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Play.apply(contentId, PlayerEventHandlerImpl.this.defaultPosition)
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          1448
+          -
+          1463
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.defaultPosition
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.defaultPosition
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          1628
+          -
+          1643
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &amp; contentId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1549
+          -
+          1653
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;received ServiceUnavailable error while calling bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId)
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1551
+          -
+          1622
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;received ServiceUnavailable error while calling bookmarks for userId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1622
+          -
+          1628
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1652
+          -
+          1653
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1523
+          -
+          1654
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.log
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.logger.log(java.util.logging.Level.WARNING, scala.StringContext.apply(&quot;received ServiceUnavailable error while calling bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId))
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          1534
+          -
+          1547
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          java.util.logging.Level.WARNING
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Level.WARNING
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1663
+          -
+          1695
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.player.Play.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Play.apply(contentId, PlayerEventHandlerImpl.this.defaultPosition)
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1679
+          -
+          1694
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.defaultPosition
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.defaultPosition
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1830
+          -
+          1845
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &amp; contentId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          1763
+          -
+          1855
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;received GenericError while calling bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId)
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1824
+          -
+          1830
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1765
+          -
+          1824
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;received GenericError while calling bookmarks for userId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1854
+          -
+          1855
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          1738
+          -
+          1856
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.log
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.logger.log(java.util.logging.Level.SEVERE, scala.StringContext.apply(&quot;received GenericError while calling bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId))
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1749
+          -
+          1761
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          java.util.logging.Level.SEVERE
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Level.SEVERE
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          1977
+          -
+          1977
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.bookmarking.Bookmark.apply$default$4
+        </td>
+        <td style="background: #AEF1AE">
+          com.sky.bookmarking.Bookmark.apply$default$4
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          1986
+          -
+          1992
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          1965
+          -
+          2021
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.bookmarking.BookmarkingService.put
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.service.put(com.sky.bookmarking.Bookmark.apply(PlayerEventHandlerImpl.this.userId, contentId, streamPosition, com.sky.bookmarking.Bookmark.apply$default$4))
+        </td>
+      </tr><tr>
+        <td>
+          56
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          1977
+          -
+          2020
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          com.sky.bookmarking.Bookmark.apply
+        </td>
+        <td style="background: #AEF1AE">
+          com.sky.bookmarking.Bookmark.apply(PlayerEventHandlerImpl.this.userId, contentId, streamPosition, com.sky.bookmarking.Bookmark.apply$default$4)
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          2118
+          -
+          2232
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.StringContext.s
+        </td>
+        <td style="background: #AEF1AE">
+          scala.StringContext.apply(&quot;received GenericError while storing bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot; and error was: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId, error)
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          2104
+          -
+          2116
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          java.util.logging.Level.SEVERE
+        </td>
+        <td style="background: #AEF1AE">
+          java.util.logging.Level.SEVERE
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          2209
+          -
+          2226
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; and error was: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          2185
+          -
+          2200
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot; &amp; contentId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          58
+        </td>
+        <td>
+          2179
+          -
+          2185
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.player.PlayerEventHandlerImpl.userId
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.userId
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          60
+        </td>
+        <td>
+          2093
+          -
+          2233
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.logging.Logger.log
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.logger.log(java.util.logging.Level.SEVERE, scala.StringContext.apply(&quot;received GenericError while storing bookmarks for userId: &quot;, &quot; &amp; contentId: &quot;, &quot; and error was: &quot;, &quot;&quot;).s(PlayerEventHandlerImpl.this.userId, contentId, error))
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          54
+        </td>
+        <td>
+          2120
+          -
+          2179
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;received GenericError while storing bookmarks for userId: &quot;
+        </td>
+      </tr><tr>
+        <td>
+          60
+        </td>
+        <td>
+          57
+        </td>
+        <td>
+          2231
+          -
+          2232
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;&quot;
+        </td>
+      </tr><tr>
+        <td>
+          65
+        </td>
+        <td>
+          62
+        </td>
+        <td>
+          2349
+          -
+          2391
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.time.OffsetDateTime.minusDays
+        </td>
+        <td style="background: #AEF1AE">
+          java.time.OffsetDateTime.now().minusDays(PlayerEventHandlerImpl.this.filterDays.toLong)
+        </td>
+      </tr><tr>
+        <td>
+          65
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          2380
+          -
+          2390
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Int.toLong
+        </td>
+        <td style="background: #AEF1AE">
+          PlayerEventHandlerImpl.this.filterDays.toLong
+        </td>
+      </tr><tr>
+        <td>
+          65
+        </td>
+        <td>
+          63
+        </td>
+        <td>
+          2322
+          -
+          2392
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.time.OffsetDateTime.isAfter
+        </td>
+        <td style="background: #AEF1AE">
+          bookmark.timestamp.isAfter(java.time.OffsetDateTime.now().minusDays(PlayerEventHandlerImpl.this.filterDays.toLong))
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          68
+        </td>
+        <td>
+          2465
+          -
+          2528
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.collection.SeqLike.sortBy
+        </td>
+        <td style="background: #AEF1AE">
+          bookmarks.sortBy[java.time.OffsetDateTime](((x$2: com.sky.bookmarking.Bookmark) =&gt; x$2.timestamp))(scala.`package`.Ordering.apply[java.time.OffsetDateTime](math.this.Ordering.ordered[java.time.OffsetDateTime](scala.Predef.$conforms[java.time.OffsetDateTime])).reverse)
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          65
+        </td>
+        <td>
+          2503
+          -
+          2503
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.Predef.$conforms
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.$conforms[java.time.OffsetDateTime]
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          64
+        </td>
+        <td>
+          2482
+          -
+          2493
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.sky.bookmarking.Bookmark.timestamp
+        </td>
+        <td style="background: #AEF1AE">
+          x$2.timestamp
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          67
+        </td>
+        <td>
+          2495
+          -
+          2527
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.math.Ordering.reverse
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Ordering.apply[java.time.OffsetDateTime](math.this.Ordering.ordered[java.time.OffsetDateTime](scala.Predef.$conforms[java.time.OffsetDateTime])).reverse
+        </td>
+      </tr><tr>
+        <td>
+          67
+        </td>
+        <td>
+          66
+        </td>
+        <td>
+          2503
+          -
+          2503
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.math.LowPriorityOrderingImplicits.ordered
+        </td>
+        <td style="background: #AEF1AE">
+          math.this.Ordering.ordered[java.time.OffsetDateTime](scala.Predef.$conforms[java.time.OffsetDateTime])
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>
